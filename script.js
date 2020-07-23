@@ -34,5 +34,23 @@ function drawPic() {
 				(this.baseY = y + canvas.height / 2 - png.height * 2),
 				(this.density = Math.random() * 10 + 2);
 		}
+
+		draw() {
+			ctx.beginPath();
+			ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+			ctx.closePath();
+			ctx.fill();
+		}
+
+		update() {
+			ctx.fillStyle = this.color;
+
+			// Collision detection
+			let dx = mouse.x - this.x;
+			let dy = mouse.y - this.y;
+			let distance = Math.sqrt(dx * dx + dy * dy);
+			let forceDirectionX = dx / distance;
+			let forceDirectionY = dy / distance;
+		}
 	}
 }
