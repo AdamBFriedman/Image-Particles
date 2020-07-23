@@ -51,6 +51,30 @@ function drawPic() {
 			let distance = Math.sqrt(dx * dx + dy * dy);
 			let forceDirectionX = dx / distance;
 			let forceDirectionY = dy / distance;
+
+			// Max distance
+			const maxDistance = 100;
+			let force = (maxDistance - distance) / maxDistance;
+			if (force < 0) force = 0;
+
+			let directionX = forceDirectionX * force * this.density * 0.6;
+			let directionY = forceDirectionY * force * this.density * 0.6;
+
+			if (distance < mouse.radius + this.size) {
+				this.x -= directionX;
+				this.y -= directionY;
+			} else {
+				if (this.x !== this.baseX) {
+					let dx = this.x - this.baseX;
+					this.x -= dx / 20;
+				}
+				if (this.y !== this.baseY) {
+					let dy = this.y - this.baseY;
+					this.y -= dy / 20;
+				}
+			}
+
+			this.draw();
 		}
 	}
 }
