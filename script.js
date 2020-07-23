@@ -10,3 +10,9 @@ let mouse = {
 	y: null,
 	radius: 100,
 };
+
+// Mouse movement
+window.addEventListener('mousemove', (event) => {
+	mouse.x = event.x + canvas.clientLeft / 2;
+	mouse.y = event.y + canvas.clientLeft / 2;
+});
