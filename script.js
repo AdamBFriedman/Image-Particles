@@ -99,4 +99,15 @@ function drawPic() {
 			}
 		}
 	}
+
+	function animate() {
+		requestAnimationFrame(animate);
+		ctx.fillStyle = 'rgba(0,0,0,.05)';
+		ctx.fillRect(0, 0, innerWidth, innerHeight);
+
+		// Trailing effect
+		for (let i = 0; i < particleArray.length; i++) {
+			particleArray[i].update();
+		}
+	}
 }
