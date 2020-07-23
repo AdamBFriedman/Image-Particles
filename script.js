@@ -110,4 +110,14 @@ function drawPic() {
 			particleArray[i].update();
 		}
 	}
+
+	init();
+	animate();
+
+	// Resize listener
+	window.addEventListener('resize', () => {
+		canvas.width = innerWidth;
+		canvas.height = innerHeight;
+		init();
+	});
 }
